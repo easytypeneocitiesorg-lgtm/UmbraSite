@@ -35,7 +35,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             background-image: radial-gradient(circle at 50% 0%, #1a1a24 0%, transparent 50%);
-            padding: 2rem 0; /* Added padding for scrolling */
+            padding: 2rem 0;
         }
 
         .container {
@@ -167,18 +167,24 @@
             letter-spacing: 2px;
         }
 
+        /* Responsive YouTube Wrapper */
         .video-wrapper {
+            position: relative;
             width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #1a1a24;
             background-color: #000000;
         }
 
-        video {
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            display: block;
-            outline: none;
+            height: 100%;
+            border: 0;
         }
 
         /* Ambient Background effects */
@@ -232,11 +238,7 @@
         <div class="showcase-container">
             <h2 class="section-title">Showcase</h2>
             <div class="video-wrapper">
-                <!-- 'controls' attribute ensures it only plays when the user presses play -->
-                <video controls preload="metadata">
-                    <source src="umbrashowcase.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <iframe src="https://www.youtube.com/embed/_nM9a9UdMOs" title="Umbra Script Showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
     </div>
