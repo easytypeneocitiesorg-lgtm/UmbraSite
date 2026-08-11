@@ -115,11 +115,13 @@
             white-space: nowrap;
             margin-bottom: 1.5rem;
             border: 1px solid #1a1a24;
+            line-height: 1.6;
         }
 
         .code-block .keyword { color: #cc7832; }
         .code-block .string { color: #6a8759; }
         .code-block .function { color: #ffc66d; }
+        .code-block .comment { color: #808080; font-style: italic; }
 
         /* Copy Button */
         .copy-btn {
@@ -226,6 +228,7 @@
             </div>
             
             <div class="code-block" id="script-code">
+                <span class="comment">-- Usage Note: Press the standard Insert (Ins) key to toggle the user interface. Please ensure you are utilizing the primary Insert key, not the numpad variant.</span><br>
                 <span class="function">loadstring</span>(<span class="keyword">game</span>:HttpGet(<span class="string">"https://raw.githubusercontent.com/UmbraScript0/Umbra/refs/heads/main/Umbra.lua"</span>))()
             </div>
             
@@ -245,7 +248,8 @@
 
     <script>
         function copyToClipboard() {
-            const scriptText = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/UmbraScript0/Umbra/refs/heads/main/Umbra.lua"))()';
+            // The text that actually gets copied to the user's clipboard
+            const scriptText = '-- Usage Note: Press the standard Insert (Ins) key to toggle the user interface. Please ensure you are utilizing the primary Insert key, not the numpad variant.\nloadstring(game:HttpGet("https://raw.githubusercontent.com/UmbraScript0/Umbra/refs/heads/main/Umbra.lua"))()';
             const btn = document.getElementById("copyBtn");
             
             navigator.clipboard.writeText(scriptText).then(() => {
