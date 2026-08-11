@@ -35,6 +35,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             background-image: radial-gradient(circle at 50% 0%, #1a1a24 0%, transparent 50%);
+            padding: 2rem 0; /* Added padding for scrolling */
         }
 
         .container {
@@ -82,11 +83,24 @@
             padding: 1.5rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(94, 53, 177, 0.15) inset;
             transition: all 0.3s ease;
+            margin-bottom: 3rem;
         }
 
         .script-container:hover {
             border-color: var(--accent);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 30px rgba(94, 53, 177, 0.3) inset;
+        }
+
+        /* Professional Note */
+        .usage-note {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: left;
+            margin-bottom: 1rem;
+            padding-left: 12px;
+            border-left: 3px solid var(--accent);
+            font-weight: 400;
+            line-height: 1.4;
         }
 
         .code-block {
@@ -135,9 +149,44 @@
             transform: translateY(1px);
         }
 
+        /* Showcase Section */
+        .showcase-container {
+            background-color: var(--box-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        h2.section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #1a1a24;
+            background-color: #000000;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            outline: none;
+        }
+
         /* Ambient Background effects */
         .ambient-shadow {
-            position: absolute;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 600px;
             height: 600px;
             background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
@@ -152,6 +201,7 @@
             h1.title { font-size: 3.5rem; }
             p.subtitle { font-size: 1rem; }
             .container { padding: 1rem; }
+            .showcase-container { padding: 1rem; }
         }
     </style>
 </head>
@@ -163,7 +213,12 @@
         <h1 class="title">Umbra</h1>
         <p class="subtitle">The best <span class="highlight">free</span> and <span class="highlight">keyless</span> universal Roblox script.</p>
 
+        <!-- Loadstring Section -->
         <div class="script-container">
+            <div class="usage-note">
+                <strong>Usage Note:</strong> Press the standard <strong>Insert (Ins)</strong> key to toggle the user interface. Please ensure you are utilizing the primary Insert key, not the numpad variant.
+            </div>
+            
             <div class="code-block" id="script-code">
                 <span class="function">loadstring</span>(<span class="keyword">game</span>:HttpGet(<span class="string">"https://raw.githubusercontent.com/UmbraScript0/Umbra/refs/heads/main/Umbra.lua"</span>))()
             </div>
@@ -171,6 +226,18 @@
             <button class="copy-btn" id="copyBtn" onclick="copyToClipboard()">
                 Copy Loadstring
             </button>
+        </div>
+
+        <!-- Video Showcase Section -->
+        <div class="showcase-container">
+            <h2 class="section-title">Showcase</h2>
+            <div class="video-wrapper">
+                <!-- 'controls' attribute ensures it only plays when the user presses play -->
+                <video controls preload="metadata">
+                    <source src="umbrashowcase.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </div>
     </div>
 
