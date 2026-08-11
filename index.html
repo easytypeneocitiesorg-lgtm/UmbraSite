@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umbra | Universal Roblox Script</title>
+    <style>
+        /* CSS Variables for Umbra Theme */
+        :root {
+            --bg-color: #050507;
+            --text-main: #f0f0f0;
+            --text-muted: #888893;
+            --accent: #5e35b1; /* Deep Shadowy Purple */
+            --accent-glow: rgba(94, 53, 177, 0.6);
+            --box-bg: #0e0e12;
+            --border-color: #1f1f27;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, #1a1a24 0%, transparent 50%);
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        h1.title {
+            font-size: 5rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px var(--accent-glow);
+            animation: pulse-shadow 3s infinite alternate;
+        }
+
+        @keyframes pulse-shadow {
+            0% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 30px var(--accent-glow); }
+            100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 60px var(--accent-glow); }
+        }
+
+        p.subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .highlight {
+            color: #b39ddb;
+            font-weight: 500;
+        }
+
+        /* Script Box */
+        .script-container {
+            background-color: var(--box-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(94, 53, 177, 0.15) inset;
+            transition: all 0.3s ease;
+        }
+
+        .script-container:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 30px rgba(94, 53, 177, 0.3) inset;
+        }
+
+        .code-block {
+            background-color: #000000;
+            color: #a9b7c6;
+            font-family: 'Consolas', 'Courier New', monospace;
+            padding: 1.2rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            text-align: left;
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-bottom: 1.5rem;
+            border: 1px solid #1a1a24;
+        }
+
+        .code-block .keyword { color: #cc7832; }
+        .code-block .string { color: #6a8759; }
+        .code-block .function { color: #ffc66d; }
+
+        /* Copy Button */
+        .copy-btn {
+            background: linear-gradient(135deg, var(--accent), #311b92);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(94, 53, 177, 0.8);
+            background: linear-gradient(135deg, #7e57c2, #4527a0);
+        }
+
+        .copy-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Ambient Background effects */
+        .ambient-shadow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 600px) {
+            h1.title { font-size: 3.5rem; }
+            p.subtitle { font-size: 1rem; }
+            .container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-shadow"></div>
+
+    <div class="container">
+        <h1 class="title">Umbra</h1>
+        <p class="subtitle">The best <span class="highlight">free</span> and <span class="highlight">keyless</span> universal Roblox script.</p>
+
+        <div class="script-container">
+            <div class="code-block" id="script-code">
+                <span class="function">loadstring</span>(<span class="keyword">game</span>:GetService(<span class="string">"HttpService"</span>) -- 
+                <span class="function">loadstring</span>(<span class="keyword">game</span>:HttpGet(<span class="string">"https://raw.githubusercontent.com/UmbraScript0/Umbra/refs/heads/main/Umbra.lua"</span>))()
+            </div>
+            
+            <button class="copy-btn" id="copyBtn" onclick="copyToClipboard()">
+                Copy Loadstring
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const scriptText = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/UmbraScript0/Umbra/refs/heads/main/Umbra.lua"))()';
+            const btn = document.getElementById("copyBtn");
+            
+            navigator.clipboard.writeText(scriptText).then(() => {
+                const originalText = btn.innerText;
+                btn.innerText = "✓ Copied to Clipboard!";
+                btn.style.background = "linear-gradient(135deg, #43a047, #1b5e20)";
+                btn.style.boxShadow = "0 4px 15px rgba(67, 160, 71, 0.4)";
+                
+                setTimeout(() => {
+                    btn.innerText = "Copy Loadstring";
+                    btn.style.background = "";
+                    btn.style.boxShadow = "";
+                }, 2500);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                btn.innerText = "Error Copying";
+            });
+        }
+    </script>
+</body>
+</html>
