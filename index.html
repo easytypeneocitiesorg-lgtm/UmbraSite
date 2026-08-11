@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Umbra | Universal Roblox Script</title>
+  
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
-        /* CSS Variables for Umbra Theme */
+        
         :root {
             --bg-color: #050507;
             --text-main: #f0f0f0;
             --text-muted: #888893;
-            --accent: #5e35b1; /* Deep Shadowy Purple */
+            --accent: #5e35b1;
             --accent-glow: rgba(94, 53, 177, 0.6);
             --box-bg: #0e0e12;
             --border-color: #1f1f27;
@@ -72,7 +74,6 @@
             font-weight: 500;
         }
 
-        /* Script Box */
         .script-container {
             background-color: var(--box-bg);
             border: 1px solid var(--border-color);
@@ -105,7 +106,6 @@
         .code-block .string { color: #6a8759; }
         .code-block .function { color: #ffc66d; }
 
-        /* Copy Button */
         .copy-btn {
             background: linear-gradient(135deg, var(--accent), #311b92);
             color: white;
@@ -133,7 +133,6 @@
             transform: translateY(1px);
         }
 
-        /* Ambient Background effects */
         .ambient-shadow {
             position: absolute;
             width: 600px;
@@ -178,7 +177,6 @@
             const btn = document.getElementById("copyBtn");
             
             navigator.clipboard.writeText(scriptText).then(() => {
-                const originalText = btn.innerText;
                 btn.innerText = "✓ Copied to Clipboard!";
                 btn.style.background = "linear-gradient(135deg, #43a047, #1b5e20)";
                 btn.style.boxShadow = "0 4px 15px rgba(67, 160, 71, 0.4)";
